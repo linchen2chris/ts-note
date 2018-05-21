@@ -1,3 +1,0 @@
-* typescript
-** tutorial-1
-   typescript can directly compile pure js file.

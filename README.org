@@ -1,0 +1,26 @@
+* typescript
+** tutorial-1
+   typescript can directly compile pure js file.
+** tutorial-2 => basic type
+   these are the basic types
+   1. boolean src_typescript{let isDone: boolean = false;}
+   2. number src_typescript{let age: number = 3;}
+   3. string src_typescript{let name: string = "chris";}
+   4. Array src_typescript{let scores: Array<number> = [90,91,92];}
+   5. Tuple src_typescript{let x: [string, number]; x = ['hello', 10];}
+   6. enum src_typescript{enum Color {Red, Green, Blue}; let c: enum = Color.Green;}
+   7. any src_typescript{let notSure: any = 4;}
+   8. void src_typescript{let unusable: void = undefined;}
+   9. null src_typescript{let n: null = null;}
+   10. undefined src_typescript{let u: undefined = undefined;}
+   11. never: throw error OR has no return OR arrow function.
+       #+BEGIN_SRC typescript
+       function error(): never {
+         throw new Error();
+       }
+       #+END_SRC
+       
+
+    
+     
+

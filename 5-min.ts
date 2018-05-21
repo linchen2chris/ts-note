@@ -4,5 +4,6 @@ function greeter(name) {
 
 let user = "jane";
 
-console.log(greeter(user));
+let a: Array<number> = [1,2,3];
+console.log(greeter(a));
 
