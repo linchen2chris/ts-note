@@ -19,8 +19,26 @@
          throw new Error();
        }
        #+END_SRC
-       
+** tutorial-3 => interface
+   interface用来1）描述对象结构 2）描述函数 3）描述索引类型
+    #+BEGIN_SRC typescript
+       interface Name {
+         firstName: string,
+         middleName?: string, // ? stand for it is optional
+         readonly lastName: string, // readonly stand for it is readonly after construct.
+       }
+    #+END_SRC
 
+    #+BEGIN_SRC typescript
+    interface search {
+      (source: string, substring: string): boolean;
+    }  
+    #+END_SRC
     
-     
-
+    共有支持两种索引签名：字符串和数字。 可以同时使用两种类型的索引，但是数字索引的返回值必须是字符串索引返回值类型的子类型。 这是因为当使用 number来索引时，JavaScript会将它转换成string然后再去索引对象。 也就是说用 100（一个number）去索引等同于使用"100"（一个string）去索引，因此两者需要保持一致。
+    #+BEGIN_SRC typescript
+    interface StringArray {
+      [index: number]: string,
+      [name: string]: string,
+    }
+    #+END_SRC
