@@ -20,7 +20,7 @@
        }
        #+END_SRC
 ** tutorial-3 => interface
-   interface用来1）描述对象结构 2）描述函数 3）描述索引类型
+   interface用来1）描述对象结构 2）描述函数 3）描述索引类型 4）描述类
     #+BEGIN_SRC typescript
        interface Name {
          firstName: string,
@@ -40,5 +40,54 @@
     interface StringArray {
       [index: number]: string,
       [name: string]: string,
+    }
+    #+END_SRC
+
+    接口描述了类的公共部分，而不是公共和私有两部分。 它不会帮你检查类是否具有某些私有成员。
+    #+BEGIN_SRC typescript
+    interface ClockInterface {
+      currentTime: Date;
+    }
+
+    class Clock implements ClockInterface {
+      currentTime: Date;
+      constructor(h: number, m: number) { }
+    }
+    #+END_SRC
+    类是具有两个类型的：静态部分的类型和实例的类型, 当一个类实现了一个接口时，只对其实例部分进行类型检查。 constructor存在于类的静态部分，所以不在检查的范围内。
+
+    接口也可以相互继承, 而且一个接口可以继承多个接口
+    #+BEGIN_SRC typescript
+    interface Shape {
+      color: string;
+    }
+
+    interface PenStroke {
+      penWidth: number;
+    }
+
+    interface Square extends Shape, PenStroke {
+      sideLength: number;
+    }
+    #+END_SRC
+
+    接口可以继承类😱会继承类的成员但不包括其实现
+    接口同样会继承到类的private和protected成员。 这意味着当你创建了一个接口继承了一个拥有私有或受保护的成员的类时，这个接口类型只能被这个类或其子类所实现（implement）
+    #+BEGIN_SRC typescript
+    class Control {
+      private state: any;
+    }
+    
+    interface SelectableControl extends Control {
+      select(): void;
+    }
+    
+    class Button extends Control implements SelectableControl {
+      select() { }
+    }
+    
+    // 错误：“Image”类型缺少“state”属性。
+    class Image implements SelectableControl {
+      select() { }
     }
     #+END_SRC
